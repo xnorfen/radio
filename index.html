@@ -841,6 +841,142 @@ body {
 }
 </style>
 
+
+<style>
+/* Version 1.2 - iPad Air iOS 12 landscape fix */
+@media screen and (orientation:landscape) and (min-width:900px){
+  .app{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    height:100vh!important;
+    max-width:none!important;
+    min-height:0!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  .head{
+    position:absolute!important;
+    left:16px!important;
+    right:16px!important;
+    top:8px!important;
+    width:auto!important;
+    height:48px!important;
+    display:-webkit-box!important;
+    display:-webkit-flex!important;
+    display:flex!important;
+    -webkit-box-align:center!important;
+    -webkit-align-items:center!important;
+    align-items:center!important;
+    -webkit-box-pack:center!important;
+    -webkit-justify-content:center!important;
+    justify-content:center!important;
+  }
+
+  .grid{
+    position:absolute!important;
+    left:14px!important;
+    top:62px!important;
+    bottom:14px!important;
+    width:60%!important;
+    height:auto!important;
+    padding:0 12px 0 0!important;
+    margin:0!important;
+    display:-webkit-box!important;
+    display:-webkit-flex!important;
+    display:flex!important;
+    -webkit-flex-wrap:wrap!important;
+    flex-wrap:wrap!important;
+  }
+
+  .preset{
+    position:relative!important;
+    box-sizing:border-box!important;
+    width:50%!important;
+    height:25%!important;
+    padding:5px 7px!important;
+    margin:0!important;
+  }
+
+  .now{
+    position:absolute!important;
+    left:61%!important;
+    right:16px!important;
+    top:62px!important;
+    bottom:96px!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0!important;
+    padding:16px!important;
+    display:-webkit-box!important;
+    display:-webkit-flex!important;
+    display:flex!important;
+    -webkit-box-orient:vertical!important;
+    -webkit-box-direction:normal!important;
+    -webkit-flex-direction:column!important;
+    flex-direction:column!important;
+    -webkit-box-align:center!important;
+    -webkit-align-items:center!important;
+    align-items:center!important;
+    -webkit-box-pack:center!important;
+    -webkit-justify-content:center!important;
+    justify-content:center!important;
+    visibility:visible!important;
+    opacity:1!important;
+    z-index:5!important;
+  }
+
+  .now .art{
+    display:block!important;
+    width:94%!important;
+    max-width:380px!important;
+    height:125px!important;
+    max-height:125px!important;
+    margin:0 auto 10px auto!important;
+    object-fit:contain!important;
+    background:transparent!important;
+  }
+
+  .now>div{
+    display:block!important;
+    width:100%!important;
+  }
+
+  .station{font-size:34px!important;line-height:38px!important}
+  .program{font-size:21px!important;line-height:25px!important}
+  .song{font-size:20px!important;line-height:24px!important}
+  .meta{font-size:15px!important;line-height:19px!important}
+
+  .controls{
+    position:absolute!important;
+    left:61%!important;
+    right:16px!important;
+    bottom:18px!important;
+    width:auto!important;
+    height:66px!important;
+    margin:0!important;
+    padding:0!important;
+    display:-webkit-box!important;
+    display:-webkit-flex!important;
+    display:flex!important;
+    z-index:6!important;
+  }
+
+  .controls button{
+    -webkit-box-flex:1!important;
+    -webkit-flex:1 1 0!important;
+    flex:1 1 0!important;
+    height:62px!important;
+    margin:0 5px!important;
+  }
+
+  .note{display:none!important}
+  .version{bottom:2px!important}
+}
+</style>
+
 </head><body><main class="app">
 <div class="head"><b>WEBBRADIO</b><div id="clock" class="clock">--:--</div><div id="date" class="date"></div></div>
 <div class="grid">
@@ -856,7 +992,7 @@ body {
 <section class="now"><img id="art" class="art" alt=""><div><div id="station" class="station">Välj station</div><div id="program" class="program">Redo</div><div id="song" class="song"></div><div id="meta" class="meta"></div></div></section>
 <div class="controls"><button id="pp" class="play">▶ Spela</button><button id="stop" class="stop">■ Stoppa</button></div>
 <div class="note">SR: program + aktuell låt när metadata finns. Uppdateras var 30:e sekund.</div>
-<div id="version" class="version">Version 1.1</div>
+<div id="version" class="version">Version 1.2</div>
 <audio id="audio" playsinline preload="none"></audio>
 <script>
 const a=document.getElementById('audio'), station=document.getElementById('station'), program=document.getElementById('program'), song=document.getElementById('song'), meta=document.getElementById('meta'), art=document.getElementById('art'), pp=document.getElementById('pp');
