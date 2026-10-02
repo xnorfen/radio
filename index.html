@@ -843,7 +843,7 @@ body {
 
 
 <style>
-/* Version 1.5 - iPad Air iOS 12 landscape fix */
+/* Version 1.6 - iPad Air iOS 12 landscape fix */
 @media screen and (orientation:landscape) and (min-width:900px){
   .app{
     position:relative!important;
@@ -979,7 +979,7 @@ body {
 
 
 <style>
-/* Version 1.5 - slightly shorter information panel */
+/* Version 1.6 - slightly shorter information panel */
 @media screen and (orientation:landscape) and (min-width:900px){
   .now{
     top:76px!important;
@@ -994,7 +994,7 @@ body {
 
 
 <style>
-/* Version 1.5 - information panel half height */
+/* Version 1.6 - information panel half height */
 @media screen and (orientation:landscape) and (min-width:900px){
   .now{
     top:76px!important;
@@ -1016,13 +1016,36 @@ body {
 
 
 <style>
-/* Version 1.5 - single full-width Play/Pause control */
+/* Version 1.6 - single full-width Play/Pause control */
 @media screen and (orientation:landscape) and (min-width:900px){
   .controls #pp{
     width:100%!important;
     margin:0!important;
     -webkit-flex:1 1 100%!important;
     flex:1 1 100%!important;
+  }
+}
+</style>
+
+
+<style>
+/* Version 1.6 - Play/Pause directly below information panel in landscape */
+@media screen and (orientation:landscape) and (min-width:900px){
+  .controls{
+    position:absolute!important;
+    left:61%!important;
+    right:16px!important;
+    top:calc(76px + ((100vh - 188px) / 2) + 10px)!important;
+    bottom:auto!important;
+    width:auto!important;
+    height:64px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  .controls #pp{
+    width:100%!important;
+    height:62px!important;
+    margin:0!important;
   }
 }
 </style>
@@ -1042,7 +1065,7 @@ body {
 <section class="now"><img id="art" class="art" alt=""><div><div id="station" class="station">Välj station</div><div id="program" class="program">Redo</div><div id="song" class="song"></div><div id="meta" class="meta"></div></div></section>
 <div class="controls"><button id="pp" class="play">▶ Spela</button></div>
 <div class="note">SR: program + aktuell låt när metadata finns. Uppdateras var 30:e sekund.</div>
-<div id="version" class="version">Version 1.5</div>
+<div id="version" class="version">Version 1.6</div>
 <audio id="audio" playsinline preload="none"></audio>
 <script>
 const a=document.getElementById('audio'), station=document.getElementById('station'), program=document.getElementById('program'), song=document.getElementById('song'), meta=document.getElementById('meta'), art=document.getElementById('art'), pp=document.getElementById('pp');
