@@ -822,6 +822,25 @@ body {
 }
 </style>
 
+
+<style>
+.version{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:3px;
+  z-index:9999;
+  text-align:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:10px;
+  line-height:12px;
+  color:#66717f;
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+</style>
+
 </head><body><main class="app">
 <div class="head"><b>WEBBRADIO</b><div id="clock" class="clock">--:--</div><div id="date" class="date"></div></div>
 <div class="grid">
@@ -837,6 +856,7 @@ body {
 <section class="now"><img id="art" class="art" alt=""><div><div id="station" class="station">Välj station</div><div id="program" class="program">Redo</div><div id="song" class="song"></div><div id="meta" class="meta"></div></div></section>
 <div class="controls"><button id="pp" class="play">▶ Spela</button><button id="stop" class="stop">■ Stoppa</button></div>
 <div class="note">SR: program + aktuell låt när metadata finns. Uppdateras var 30:e sekund.</div>
+<div id="version" class="version">Version 1.1</div>
 <audio id="audio" playsinline preload="none"></audio>
 <script>
 const a=document.getElementById('audio'), station=document.getElementById('station'), program=document.getElementById('program'), song=document.getElementById('song'), meta=document.getElementById('meta'), art=document.getElementById('art'), pp=document.getElementById('pp');
