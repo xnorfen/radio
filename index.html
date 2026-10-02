@@ -841,7 +841,29 @@ body {
 <script>
 const a=document.getElementById('audio'), station=document.getElementById('station'), program=document.getElementById('program'), song=document.getElementById('song'), meta=document.getElementById('meta'), art=document.getElementById('art'), pp=document.getElementById('pp');
 let cur=null;
-function tick(){let d=new Date();clock.textContent=d.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'});date.textContent=d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'})}tick();setInterval(tick,1000);
+var clockEl=document.getElementById('clock');
+var dateEl=document.getElementById('date');
+var weekdays=['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+var months=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+
+function pad2(n){return n<10?'0'+n:String(n);}
+function tick(){
+  var d=new Date();
+  if(clockEl){
+    clockEl.innerHTML=pad2(d.getHours())+':'+pad2(d.getMinutes());
+  }
+  if(dateEl){
+    dateEl.innerHTML=weekdays[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()];
+  }
+}
+tick();
+window.setInterval(tick,1000);
+
+document.addEventListener('visibilitychange',function(){
+  if(!document.hidden){tick();}
+});
+window.addEventListener('pageshow',function(){tick();});
+window.addEventListener('focus',function(){tick();});
 function srDate(v){if(!v)return null;let m=/\/Date\((\d+)/.exec(v);return m?new Date(+m[1]):new Date(v)}
 async function updateMeta(){
  if(!cur)return;
@@ -852,7 +874,7 @@ async function updateMeta(){
       fetch(`https://api.sr.se/api/v2/playlists/rightnow?channelid=${cur.dataset.srid}&format=json`).then(r=>r.json()).catch(()=>null)
     ]);
     let c=rs.channel&&rs.channel.currentscheduledepisode;
-    if(c){program.textContent=c.title||c.program?.name||'Direktsändning';let s=srDate(c.starttimeutc),e=srDate(c.endtimeutc);meta.textContent=s&&e?`${s.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}–${e.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}`:'Direktsändning'}
+    if(c){program.textContent=c.title||(c.program&&c.program.name)||'Direktsändning';let s=srDate(c.starttimeutc),e=srDate(c.endtimeutc);meta.textContent=s&&e?`${s.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}–${e.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'})}`:'Direktsändning'}
     let x=rp&&rp.playlist&&rp.playlist.song;
     song.textContent=x?(x.artist?`${x.artist} – ${x.title}`:x.title||''):'';
    }catch(e){meta.textContent='Metadata kunde inte hämtas just nu'}
